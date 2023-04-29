@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCartStore } from "@/store";
 import formatPrice from "@/util/PriceFormat";
+import { IoAddCircle, IoRemoveCircle } from "react-icons/io5";
 
 export default function Cart() {
   const cartStore = useCartStore();
@@ -26,12 +27,45 @@ export default function Cart() {
             />
             <div>
               <h2>{item.name}</h2>
-              <h2>Quantity: {item.quantity}</h2>
-              <p className='text-sm'>{item.unit_amount && formatPrice(item.unit_amount)}</p>
+              {/* Update quantity of a product */}
+              <div className='flex gap-2'>
+                <h2>Quantity: {item.quantity}</h2>
+                <button
+                  className='text-xl'
+                  onClick={() =>
+                    cartStore.removeProduct({
+                      id: item.id,
+                      image: item.image,
+                      name: item.name,
+                      unit_amount: item.unit_amount,
+                      quantity: item.quantity,
+                    })
+                  }>
+                  <IoRemoveCircle />
+                </button>
+                <button
+                  className='text-xl'
+                  onClick={() =>
+                    cartStore.addProduct({
+                      id: item.id,
+                      image: item.image,
+                      name: item.name,
+                      unit_amount: item.unit_amount,
+                      quantity: item.quantity,
+                    })
+                  }>
+                  <IoAddCircle />
+                </button>
+              </div>
+              <p className='text-sm'>
+                {item.unit_amount && formatPrice(item.unit_amount)}
+              </p>
             </div>
           </div>
         ))}
-        <button className="py-2 mt-4 bg-teal-700 w-full rounded-md text-white">Checkout</button>
+        <button className='py-2 mt-4 bg-teal-700 w-full rounded-md text-white'>
+          Checkout
+        </button>
       </div>
     </div>
   );
