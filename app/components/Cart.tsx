@@ -28,11 +28,20 @@ export default function Cart() {
         layout
         onClick={(e) => e.stopPropagation()}
         className='bg-white absolute right-0 top-0 h-screen p-12 overflow-y-scroll text-gray-700 w-full lg:w-2/5'>
-        <button
-          onClick={() => cartStore.toggleCart()}
-          className='text-sm font-bold pb-12'>
-          Back to store 🏃
-        </button>
+        {cartStore.onCheckout === "cart" && (
+          <button
+            onClick={() => cartStore.toggleCart()}
+            className='text-sm font-bold pb-12'>
+            Back to store 🏃
+          </button>
+        )}
+        {cartStore.onCheckout === "checkout" && (
+          <button
+            onClick={() => cartStore.setCheckout("cart")}
+            className='text-sm font-bold pb-12'>
+            Check your cart 🛒
+          </button>
+        )}
         {/* Cart Items */}
         {cartStore.onCheckout === "cart" && (
           <>
@@ -86,7 +95,7 @@ export default function Cart() {
           </>
         )}
         {/* Checkout and total */}
-        {cartStore.cart.length > 0 && (
+        {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" ? (
           <motion.div layout>
             <p>Total: {formatPrice(totalPrice)}</p>
 
@@ -96,7 +105,7 @@ export default function Cart() {
               Checkout
             </button>
           </motion.div>
-        )}
+        ) : null}
         {/* Checkout Form */}
         {cartStore.onCheckout === "checkout" && <Checkout />}
         {/* Empty Cart */}
