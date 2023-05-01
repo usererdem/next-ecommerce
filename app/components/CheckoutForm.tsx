@@ -63,7 +63,7 @@ export default function CheckoutForm({
         id='submit'
         disabled={isLoading || !stripe || !elements}>
         <span id='button-text'>
-          {isLoading ? <span>Processing...👀 </span> : <span>Pay now</span>}
+          {isLoading ? <span>Processing...👀 </span> : <span>Pay now 🔥</span>}
         </span>
       </button>
     </form>

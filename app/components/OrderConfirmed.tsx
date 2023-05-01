@@ -28,14 +28,14 @@ export default function OrderConfirmed() {
       initial={{ scale: 0.5, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}>
       <div className='p-12 rounded-md text-center'>
-        <h1 className='text-xl font-medium'>Your order has been placed</h1>
+        <h1 className='text-xl font-medium'>Your order has been placed 🚀</h1>
         <h2 className='text-sm my-4'>Check your email for the receipt.</h2>
         <Image src={dance} className='py-8' alt='dancing' />
         <div className='flex items-center justify-center gap-12'>
           <Link href={"/dashboard"}>
             <button
               onClick={checkoutOrder}
-              className='font-medium'>
+              className='font-medium bg-teal-700 rounded-md py-2 px-4 text-white'>
               Check your Order
             </button>
           </Link>
