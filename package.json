@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@lottiefiles/react-lottie-player": "^3.5.2",
     "@next-auth/prisma-adapter": "^1.0.6",
     "@prisma/client": "^4.13.0",
     "@stripe/react-stripe-js": "^1.16.5",
