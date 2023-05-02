@@ -10,12 +10,12 @@ const roboto = Roboto({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
   variable: "--font-robot",
-})
+});
 const lobster = Lobster_Two({
   weight: "700",
   subsets: ["latin"],
   variable: "--font-lobster",
-})
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -31,13 +31,11 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions);
 
   return (
-    <html lang='en' data-theme='light'>
-      <body className={`px-4 lg:px-48 ${roboto.className}`}>
-        <Hydrate>
-          <Nav user={session?.user} expires={session?.expires as string} />
-          {children}
-        </Hydrate>
-      </body>
+    <html className={`px-4 lg:px-48 ${roboto.className}`} lang='en'>
+      <Hydrate>
+        <Nav user={session?.user} expires={session?.expires as string} />
+        {children}
+      </Hydrate>
     </html>
   );
 }
