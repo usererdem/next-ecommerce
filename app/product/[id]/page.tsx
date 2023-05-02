@@ -11,7 +11,7 @@ export default async function Product({ searchParams }: SearchParamTypes) {
         alt={searchParams.name}
         width={600}
         height={600}
-        className="rounded-lg"
+        className="w-full rounded-lg"
         priority={true}
       />
       <div className='font-medium'>
@@ -19,7 +19,7 @@ export default async function Product({ searchParams }: SearchParamTypes) {
         <p className='py-2'>{searchParams.description}</p>
         <p className='py-2'>{searchParams.features} </p>
         <div className='flex gap-2'>
-          <p className='font-bold bg-primary primary-content rounded-lg py-1 px-2'>
+          <p className='font-bold bg-primary text-white rounded-lg py-1 px-2'>
             {searchParams.unit_amount && formatPrice(searchParams.unit_amount)}{" "}
           </p>
         </div>
