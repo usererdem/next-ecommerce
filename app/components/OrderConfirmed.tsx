@@ -33,7 +33,7 @@ export default function OrderConfirmed() {
         <Image src={dance} className="py-8" alt="dancing kid" />
         <div className="flex items-center justify-center gap-12">
           <Link href={"/dashboard"}>
-            <button onClick={checkoutOrder} className="font-medium">
+            <button onClick={checkoutOrder} className="font-medium bg-primary text-white rounded-md p-3 ">
               Check your Order
             </button>
           </Link>
