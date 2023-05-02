@@ -9,7 +9,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2022-11-15",
 })
 
-const calculateOrderAmount = (items : AddCartType[]) => {
+const calculateOrderAmount = (items) => {
   const totalPrice = items.reduce((acc, item) => {
     return acc + item.unit_amount! * item.quantity!
   }, 0)
