@@ -9,6 +9,7 @@ import { AiFillShopping } from "react-icons/ai"
 import { motion, AnimatePresence } from "framer-motion"
 import DarkLight from "./DarkLight"
 import { useSession } from "next-auth/react"
+import { useMemo } from "react";
 
 export default function Nav() {
   const cartStore = useCartStore()
