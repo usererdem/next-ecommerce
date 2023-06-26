@@ -9,10 +9,18 @@ import { AiFillShopping } from "react-icons/ai"
 import { motion, AnimatePresence } from "framer-motion"
 import DarkLight from "./DarkLight"
 import { useSession } from "next-auth/react"
+import { useMemo } from "react";
 
 export default function Nav() {
   const cartStore = useCartStore()
   const { data: session, status } = useSession()
+  const totalProductCount = useMemo(
+    () =>
+      cartStore.cart
+        .map((product) => product?.quantity ?? 0) // [2, 3, 4]
+        .reduce((a, b) => a + b, 0), 
+    [cartStore.cart]
+  );
 
   return (
     <nav className="flex justify-between items-center py-12">
@@ -34,7 +42,7 @@ export default function Nav() {
                 exit={{ scale: 0 }}
                 className="bg-primary text-white text-sm font-bold w-5 h-5 rounded-full absolute left-4 bottom-4 flex items-center justify-center"
               >
-                {cartStore.cart.length}
+                {totalProductCount}
               </motion.span>
             )}
           </AnimatePresence>
