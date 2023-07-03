@@ -28,8 +28,7 @@ export default function AddCart({
       <button
         onClick={handleAddToCart}
         disabled={added}
-        className="my-4 btn btn-primary w-full"
-      >
+        className='my-4 btn btn-primary w-full'>
         {!added && <span>Add to cart</span>}
         {added && <span>Adding to cart 😄</span>}
       </button>
