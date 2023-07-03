@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useCartStore } from "@/store"
-import { AddCartType } from "@/types/AddCartType"
-import { useState } from "react"
+import { useCartStore } from "@/store";
+import { AddCartType } from "@/types/AddCartType";
+import { useState } from "react";
 import { IoAddCircle, IoRemoveCircle } from "react-icons/io5";
 
 export default function AddCart({
@@ -12,16 +12,16 @@ export default function AddCart({
   unit_amount,
   quantity,
 }: AddCartType) {
-  const cartStore = useCartStore()
-  const [added, setAdded] = useState(false)
+  const cartStore = useCartStore();
+  const [added, setAdded] = useState(false);
 
   const handleAddToCart = () => {
-    cartStore.addProduct({ id, name, unit_amount, quantity, image })
-    setAdded(true)
+    cartStore.addProduct({ id, name, unit_amount, quantity, image });
+    setAdded(true);
     setTimeout(() => {
-      setAdded(false)
-    }, 500)
-  }
+      setAdded(false);
+    }, 500);
+  };
 
   return (
     <div className='flex'>
