@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import dance from "@/public/dance.gif"
-import Link from "next/link"
-import { useCartStore } from "@/store"
-import { useEffect } from "react"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import dance from "@/public/dance.gif";
+import Link from "next/link";
+import { useCartStore } from "@/store";
+import { useEffect } from "react";
 
 export default function OrderConfirmed() {
-  const cartStore = useCartStore()
+  const cartStore = useCartStore();
 
   useEffect(() => {
-    cartStore.setPaymentIntent("")
-    cartStore.clearCart()
-  }, [])
+    cartStore.setPaymentIntent("");
+    cartStore.clearCart();
+  }, []);
 
   const checkoutOrder = () => {
     setTimeout(() => {
-      cartStore.setCheckout("cart")
-    }, 1000)
-    cartStore.toggleCart()
-  }
+      cartStore.setCheckout("cart");
+    }, 1000);
+    cartStore.toggleCart();
+  };
   return (
     <motion.div
       className="flex items-center justify-center my-12"
@@ -33,12 +33,15 @@ export default function OrderConfirmed() {
         <Image src={dance} className="py-8" alt="dancing kid" />
         <div className="flex items-center justify-center gap-12">
           <Link href={"/dashboard"}>
-            <button onClick={checkoutOrder} className="font-medium bg-primary text-white rounded-md p-3 ">
+            <button
+              onClick={checkoutOrder}
+              className="font-medium bg-primary text-white rounded-md p-3 "
+            >
               Check your Order
             </button>
           </Link>
         </div>
       </div>
     </motion.div>
-  )
+  );
 }

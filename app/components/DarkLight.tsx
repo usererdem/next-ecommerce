@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useThemeStore } from "@/store"
+import { useThemeStore } from "@/store";
 
 export default function DarkLight() {
-  const themeStore = useThemeStore()
+  const themeStore = useThemeStore();
 
   return (
     <label className="swap swap-rotate">
@@ -12,9 +12,9 @@ export default function DarkLight() {
         type="checkbox"
         onClick={() => {
           if (themeStore.mode === "light") {
-            themeStore.toggleMode("dark")
+            themeStore.toggleMode("dark");
           } else {
-            themeStore.toggleMode("light")
+            themeStore.toggleMode("light");
           }
         }}
       />
@@ -36,5 +36,5 @@ export default function DarkLight() {
         </svg>
       </>
     </label>
-  )
+  );
 }

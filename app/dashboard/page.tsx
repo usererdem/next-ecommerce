@@ -1,33 +1,33 @@
-"use client"
+"use client";
 
-import formatPrice from "@/util/PriceFormat"
-import Image from "next/image"
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import formatPrice from "@/util/PriceFormat";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Dashboard() {
-  const [orders, setOrders] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [orders, setOrders] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const fetchOrders = async () => {
-    const res = await fetch("/api/get-orders")
-    const data = await res.json()
-    return data
-  }
+    const res = await fetch("/api/get-orders");
+    const data = await res.json();
+    return data;
+  };
   useEffect(() => {
     fetchOrders()
       .then((data) => {
-        setOrders(data)
-        setLoading(false)
+        setOrders(data);
+        setLoading(false);
       })
       .catch((err) => {
-        setError(err)
-        setLoading(false)
-      })
-  }, [])
-  console.log(orders)
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error: {error}</p>
+        setError(err);
+        setLoading(false);
+      });
+  }, []);
+  console.log(orders);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
   return (
     <motion.div layout>
       <motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -77,5 +77,5 @@ export default function Dashboard() {
         ))}
       </motion.div>
     </motion.div>
-  )
+  );
 }

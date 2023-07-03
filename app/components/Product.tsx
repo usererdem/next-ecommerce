@@ -1,7 +1,7 @@
-import Image from "next/image"
-import formatPrice from "@/util/PriceFormat"
-import { ProductType } from "@/types/ProductType"
-import Link from "next/link"
+import Image from "next/image";
+import formatPrice from "@/util/PriceFormat";
+import { ProductType } from "@/types/ProductType";
+import Link from "next/link";
 
 export default function Product({
   name,
@@ -11,7 +11,7 @@ export default function Product({
   description,
   metadata,
 }: ProductType) {
-  const { features } = metadata
+  const { features } = metadata;
 
   return (
     <Link
@@ -37,5 +37,5 @@ export default function Product({
         </div>
       </div>
     </Link>
-  )
+  );
 }

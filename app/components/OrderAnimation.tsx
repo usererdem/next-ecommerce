@@ -1,6 +1,6 @@
-import { motion } from "framer-motion"
-import { Player } from "@lottiefiles/react-lottie-player"
-import order from "@/public/order.json"
+import { motion } from "framer-motion";
+import { Player } from "@lottiefiles/react-lottie-player";
+import order from "@/public/order.json";
 
 export default function OrderAnimation() {
   return (
@@ -14,5 +14,5 @@ export default function OrderAnimation() {
       </motion.h1>
       <Player autoplay loop src={order}></Player>
     </div>
-  )
+  );
 }
