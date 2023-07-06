@@ -13,10 +13,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2022-11-15",
 });
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const buf = await buffer(req);
   const sig = req.headers["stripe-signature"];
 
@@ -28,11 +25,7 @@ export default async function handler(
   //Handle different types of events
 
   try {
-    event = stripe.webhooks.constructEvent(
-      buf,
-      sig,
-      process.env.STRIPE_WEBHOOK_SECRET!
-    );
+    event = stripe.webhooks.constructEvent(buf, sig, process.env.STRIPE_WEBHOOK_SECRET!);
   } catch (err) {
     return res.status(400).send("Webook error" + err);
   }

@@ -29,10 +29,7 @@ export default function Nav() {
       </Link>
       <ul className="flex items-center gap-8">
         {/* Toggle the cart */}
-        <li
-          onClick={() => cartStore.toggleCart()}
-          className="flex items-center text-3xl relative cursor-pointer"
-        >
+        <li onClick={() => cartStore.toggleCart()} className="flex items-center text-3xl relative cursor-pointer">
           <AiFillShopping />
           <AnimatePresence>
             {cartStore.cart.length > 0 && (
@@ -66,10 +63,7 @@ export default function Nav() {
                 className="rounded-full"
                 tabIndex={0}
               />
-              <ul
-                tabIndex={0}
-                className="dropdown-content menu p-4 space-y-4 shadow bg-base-100 rounded-box w-72"
-              >
+              <ul tabIndex={0} className="dropdown-content menu p-4 space-y-4 shadow bg-base-100 rounded-box w-72">
                 <Link
                   className="hover:bg-base-300 p-4 rounded-md"
                   href={"/dashboard"}
