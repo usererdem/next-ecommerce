@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { useCartStore } from "@/store"
-import formatPrice from "@/util/PriceFormat"
-import { IoAddCircle, IoRemoveCircle } from "react-icons/io5"
-import basket from "@/public/basket.png"
-import { motion, AnimatePresence } from "framer-motion"
-import Checkout from "./Checkout"
-import OrderConfirmed from "./OrderConfirmed"
+import Image from "next/image";
+import { useCartStore } from "@/store";
+import formatPrice from "@/util/PriceFormat";
+import { IoAddCircle, IoRemoveCircle } from "react-icons/io5";
+import basket from "@/public/basket.png";
+import { motion, AnimatePresence } from "framer-motion";
+import Checkout from "./Checkout";
+import OrderConfirmed from "./OrderConfirmed";
 
 export default function Cart() {
-  const cartStore = useCartStore()
+  const cartStore = useCartStore();
 
   //Total Price
   const totalPrice = cartStore.cart.reduce((acc, item) => {
-    return acc + item.unit_amount! * item.quantity!
-  }, 0)
+    return acc + item.unit_amount! * item.quantity!;
+  }, 0);
 
   return (
     <motion.div
@@ -32,18 +32,12 @@ export default function Cart() {
         className="bg-base-200 absolute right-0 top-0 h-screen p-6 pb-24 lg:p-12 lg:pb-12 overflow-y-scroll  w-full lg:w-2/5"
       >
         {cartStore.onCheckout === "cart" && (
-          <button
-            onClick={() => cartStore.toggleCart()}
-            className="text-sm font-bold pb-12"
-          >
+          <button onClick={() => cartStore.toggleCart()} className="text-sm font-bold pb-12">
             Back to store 🏃
           </button>
         )}
         {cartStore.onCheckout === "checkout" && (
-          <button
-            onClick={() => cartStore.setCheckout("cart")}
-            className="text-sm font-bold pb-12"
-          >
+          <button onClick={() => cartStore.setCheckout("cart")} className="text-sm font-bold pb-12">
             Check your cart 🛒
           </button>
         )}
@@ -51,18 +45,8 @@ export default function Cart() {
         {cartStore.onCheckout === "cart" && (
           <>
             {cartStore.cart.map((item) => (
-              <motion.div
-                layout
-                key={item.id}
-                className="flex p-4 gap-4 bg-base-100 my-4 rounded-lg "
-              >
-                <Image
-                  className="rounded-md h-24"
-                  src={item.image}
-                  alt={item.name}
-                  width={120}
-                  height={120}
-                />
+              <motion.div layout key={item.id} className="flex p-4 gap-4 bg-base-100 my-4 rounded-lg ">
+                <Image className="rounded-md h-24" src={item.image} alt={item.name} width={120} height={120} />
                 <div>
                   <h2>{item.name}</h2>
                   {/* Update quantity of a product */}
@@ -96,9 +80,7 @@ export default function Cart() {
                     </button>
                   </div>
 
-                  <p className="text-sm">
-                    {item.unit_amount && formatPrice(item.unit_amount)}
-                  </p>
+                  <p className="text-sm">{item.unit_amount && formatPrice(item.unit_amount)}</p>
                 </div>
               </motion.div>
             ))}
@@ -134,5 +116,5 @@ export default function Cart() {
         </AnimatePresence>
       </motion.div>
     </motion.div>
-  )
+  );
 }

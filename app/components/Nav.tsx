@@ -1,24 +1,24 @@
-"use client"
+"use client";
 
-import { signIn, signOut } from "next-auth/react"
-import Image from "next/image"
-import Link from "next/link"
-import Cart from "./Cart"
-import { useCartStore } from "@/store"
-import { AiFillShopping } from "react-icons/ai"
-import { motion, AnimatePresence } from "framer-motion"
-import DarkLight from "./DarkLight"
-import { useSession } from "next-auth/react"
+import { signIn, signOut } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
+import Cart from "./Cart";
+import { useCartStore } from "@/store";
+import { AiFillShopping } from "react-icons/ai";
+import { motion, AnimatePresence } from "framer-motion";
+import DarkLight from "./DarkLight";
+import { useSession } from "next-auth/react";
 import { useMemo } from "react";
 
 export default function Nav() {
-  const cartStore = useCartStore()
-  const { data: session, status } = useSession()
+  const cartStore = useCartStore();
+  const { data: session, status } = useSession();
   const totalProductCount = useMemo(
     () =>
       cartStore.cart
         .map((product) => product?.quantity ?? 0) // [2, 3, 4]
-        .reduce((a, b) => a + b, 0), 
+        .reduce((a, b) => a + b, 0),
     [cartStore.cart]
   );
 
@@ -29,10 +29,7 @@ export default function Nav() {
       </Link>
       <ul className="flex items-center gap-8">
         {/* Toggle the cart */}
-        <li
-          onClick={() => cartStore.toggleCart()}
-          className="flex items-center text-3xl relative cursor-pointer"
-        >
+        <li onClick={() => cartStore.toggleCart()} className="flex items-center text-3xl relative cursor-pointer">
           <AiFillShopping />
           <AnimatePresence>
             {cartStore.cart.length > 0 && (
@@ -66,16 +63,13 @@ export default function Nav() {
                 className="rounded-full"
                 tabIndex={0}
               />
-              <ul
-                tabIndex={0}
-                className="dropdown-content menu p-4 space-y-4 shadow bg-base-100 rounded-box w-72"
-              >
+              <ul tabIndex={0} className="dropdown-content menu p-4 space-y-4 shadow bg-base-100 rounded-box w-72">
                 <Link
                   className="hover:bg-base-300 p-4 rounded-md"
                   href={"/dashboard"}
                   onClick={() => {
                     if (document.activeElement instanceof HTMLElement) {
-                      document.activeElement.blur()
+                      document.activeElement.blur();
                     }
                   }}
                 >
@@ -83,9 +77,9 @@ export default function Nav() {
                 </Link>
                 <li
                   onClick={() => {
-                    signOut()
+                    signOut();
                     if (document.activeElement instanceof HTMLElement) {
-                      document.activeElement.blur()
+                      document.activeElement.blur();
                     }
                   }}
                   className="hover:bg-base-300 p-4 rounded-md"
@@ -99,5 +93,5 @@ export default function Nav() {
       </ul>
       <AnimatePresence>{cartStore.isOpen && <Cart />}</AnimatePresence>
     </nav>
-  )
+  );
 }
