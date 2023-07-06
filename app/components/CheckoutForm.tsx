@@ -1,19 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import {
-  PaymentElement,
-  useStripe,
-  useElements,
-} from "@stripe/react-stripe-js";
+import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import formatPrice from "@/util/PriceFormat";
 import { useCartStore } from "@/store";
 
-export default function CheckoutForm({
-  clientSecret,
-}: {
-  clientSecret: string;
-}) {
+export default function CheckoutForm({ clientSecret }: { clientSecret: string }) {
   const stripe = useStripe();
   const elements = useElements();
   const [isLoading, setIsLoading] = useState(false);
@@ -63,9 +55,7 @@ export default function CheckoutForm({
         id="submit"
         disabled={isLoading || !stripe || !elements}
       >
-        <span id="button-text">
-          {isLoading ? <span>Processing 👀</span> : <span>Pay now 🔥</span>}
-        </span>
+        <span id="button-text">{isLoading ? <span>Processing 👀</span> : <span>Pay now 🔥</span>}</span>
       </button>
     </form>
   );

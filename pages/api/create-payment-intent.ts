@@ -16,10 +16,7 @@ const calculateOrderAmount = (items) => {
   return totalPrice;
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   //Get user
   const userSession = await getServerSession(req, res, authOptions);
   if (!userSession?.user) {
@@ -49,14 +46,9 @@ export default async function handler(
 
   //Check if the payment intent exists just update the order
   if (payment_intent_id) {
-    const current_intent = await stripe.paymentIntents.retrieve(
-      payment_intent_id
-    );
+    const current_intent = await stripe.paymentIntents.retrieve(payment_intent_id);
     if (current_intent) {
-      const updated_intent = await stripe.paymentIntents.update(
-        payment_intent_id,
-        { amount: total }
-      );
+      const updated_intent = await stripe.paymentIntents.update(payment_intent_id, { amount: total });
       //Fetch order with product ids
       const [existing_order, updated_order] = await Promise.all([
         prisma.order.findFirst({

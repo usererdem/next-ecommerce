@@ -10,18 +10,14 @@ import OrderAnimation from "./OrderAnimation";
 import { motion } from "framer-motion";
 import { useThemeStore } from "@/store";
 
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 export default function Checkout() {
   const cartStore = useCartStore();
   const router = useRouter();
   const [clientSecret, setClientSecret] = useState("");
   const themeStore = useThemeStore();
-  const [stripeTheme, setStripeTheme] = useState<
-    "flat" | "stripe" | "night" | "none"
-  >("stripe");
+  const [stripeTheme, setStripeTheme] = useState<"flat" | "stripe" | "night" | "none">("stripe");
 
   useEffect(() => {
     //Set the theme of stripe
