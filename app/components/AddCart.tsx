@@ -3,7 +3,6 @@
 import { useCartStore } from "@/store";
 import { AddCartType } from "@/types/AddCartType";
 import { useState } from "react";
-import { IoAddCircle, IoRemoveCircle } from "react-icons/io5";
 
 export default function AddCart({
   name,
@@ -24,7 +23,7 @@ export default function AddCart({
   };
 
   return (
-    <div className="flex">
+    <div className='flex'>
       <button
         onClick={handleAddToCart}
         disabled={added}
@@ -32,36 +31,6 @@ export default function AddCart({
         {!added && <span>Add to cart</span>}
         {added && <span>Adding to cart 😄</span>}
       </button>
-
-      {cartStore.cart.map((item) => (
-        <div key={item.id} className="flex bg-base-100 rounded-lg ">
-          <div className="flex">
-            <button
-              onClick={() =>
-                cartStore.removeProduct({
-                  id: item.id,
-                  image: item.image,
-                  name: item.name,
-                  unit_amount: item.unit_amount,
-                  quantity: item.quantity,
-                })
-              }
-            >
-              <IoRemoveCircle
-                className="mx-4 bg-slate-300 rounded-full border-0 text-primary hover:text-primary-focus"
-                size={32}
-              />
-            </button>
-
-            <button onClick={handleAddToCart} disabled={added}>
-              <IoAddCircle
-                className=" bg-slate-300 rounded-full border-0 text-primary hover:text-primary-focus"
-                size={32}
-              />
-            </button>
-          </div>
-        </div>
-      ))}
     </div>
   );
 }
