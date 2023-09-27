@@ -6,7 +6,7 @@ export default function DarkLight() {
   const themeStore = useThemeStore();
 
   return (
-    <label className="swap swap-rotate">
+    <label className="swap swap-rotate hover:text-accent-focus transition-all">
       <input
         defaultChecked={themeStore.mode === "light" ? false : true}
         type="checkbox"

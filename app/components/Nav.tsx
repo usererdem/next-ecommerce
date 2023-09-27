@@ -24,12 +24,18 @@ export default function Nav() {
 
   return (
     <nav className="flex justify-between items-center py-12">
-      <Link href={"/"}>
-        <h1 className="font-lobster text-xl">Styled</h1>
+      <Link href={"https://ecommerce-store-usererdem.vercel.app"}>
+        <h1 className="font-lobster text-2xl hover:text-accent-focus transition-all">Tech Store</h1>
       </Link>
       <ul className="flex items-center gap-8">
+        <Link href={"https://ecommerce-store-usererdem.vercel.app"}>
+          <h1 className="font-lobster text-xl hover:text-accent-focus transition-all">Clothing Store</h1>
+        </Link>
         {/* Toggle the cart */}
-        <li onClick={() => cartStore.toggleCart()} className="flex items-center text-3xl relative cursor-pointer">
+        <li
+          onClick={() => cartStore.toggleCart()}
+          className="flex items-center text-3xl relative cursor-pointer hover:text-accent-focus transition-all"
+        >
           <AiFillShopping />
           <AnimatePresence>
             {cartStore.cart.length > 0 && (
@@ -48,8 +54,13 @@ export default function Nav() {
         <DarkLight />
         {/* If the user is not signed in */}
         {!session?.user && (
-          <li className="bg-primary text-white py-2 px-4 rounded-md">
-            <button onClick={() => signIn()}>Sign in</button>
+          <li>
+            <button
+              className="bg-primary text-primary-content py-2 px-4 rounded-md hover:bg-accent-focus transition-all"
+              onClick={() => signIn()}
+            >
+              Sign in
+            </button>
           </li>
         )}
         {session?.user && (
