@@ -25,7 +25,7 @@ export default function Nav() {
   return (
     <nav className="flex justify-between items-center py-12">
       <Link href={"https://ecommerce-store-usererdem.vercel.app"}>
-        <h1 className="font-lobster text-2xl hover:text-accent-focus transition-all">Tech Store</h1>
+        <h1 className="font-lobster text-2xl hover:text-accent-focus transition-all">Techy</h1>
       </Link>
       <ul className="flex items-center gap-8">
         <Link href={"https://ecommerce-store-usererdem.vercel.app"}>
