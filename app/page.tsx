@@ -5,7 +5,7 @@ export default async function Home() {
   const products = await getProducts();
 
   return (
-    <main className="grid grid-cols-fluid gap-12">
+    <main className="grid grid-cols-fluid gap-6">
       {products.map((product) => (
         <Product {...product} key={product.id} />
       ))}
