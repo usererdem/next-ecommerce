@@ -13,8 +13,8 @@ export default function Product({ name, image, unit_amount, id, description, met
         query: { name, image, unit_amount, id, description, features },
       }}
     >
-      <div className="w-80">
-        <div className="h-80 aspect-square relative border-gray-300 border shadow-sm rounded-md bg-white">
+      <div className="sm:w-60 md:w-80 lg:w-48 xl:w-72">
+        <div className=" aspect-square relative border-gray-300 border shadow-sm rounded-md bg-white">
           <Image src={image} alt={name} fill className="object-contain rounded-lg p-2" priority={true} />
         </div>
         <div className="font-medium py-2">
