@@ -27,9 +27,9 @@ export default function Nav() {
       <Link href={"https://next-ecommerce-usererdem.vercel.app"}>
         <h1 className="font-lobster text-2xl hover:text-accent-focus transition-all">Techy</h1>
       </Link>
-      <ul className="flex items-center gap-8">
+      <ul className="flex items-center md:gap-8 gap-4">
         <Link href={"https://ecommerce-store-usererdem.vercel.app"}>
-          <h1 className="font-lobster text-xl hover:text-accent-focus transition-all">Clothing Store</h1>
+          <h1 className="font-lobster text-xl hover:text-accent-focus transition-all pl-2">Clothy</h1>
         </Link>
         {/* Toggle the cart */}
         <li
